@@ -93,7 +93,7 @@ async function loadHome() {
 async function loadSavedCharacters() {
     content.innerHTML = '<div class="text-center mt-5"><div class="spinner-border"></div><p class="mt-2">Acessando banco local...</p></div>';
     try {
-        const response = await fetch('api/list_favorites.php');
+        const response = await fetch('api/list_favorites.php', { credentials: 'include' });
         const data = await response.json();
 
         if (data.status === 'error' || !data || data.length === 0) {
@@ -157,9 +157,12 @@ function showDetails(char, isFromApi) {
 
 async function saveToDb(name, species, image, location) {
     const fd = new FormData();
-    fd.append('name', name); fd.append('species', species); fd.append('image', image); fd.append('url', location);
+    fd.append('name', name);
+    fd.append('species', species);
+    fd.append('image', image);
+    fd.append('url', location);
 
-    const res = await fetch('api/save_character.php', { method: 'POST', body: fd });
+    const res = await fetch('api/save_character.php', { method: 'POST', body: fd, credentials: 'include' });
     const result = await res.json();
     alert(result.message);
     if (result.status === 'error' && result.message.includes('logado')) loadLogin();
@@ -171,15 +174,15 @@ async function updateChar(id) {
     fd.append('name', document.getElementById('edit-name').value);
     fd.append('species', document.getElementById('edit-species').value);
 
-    const res = await fetch('api/update_character.php', { method: 'POST', body: fd });
+    const res = await fetch('api/update_character.php', { method: 'POST', body: fd, credentials: 'include' });
     const result = await res.json();
-    if(result.status === 'success') { alert('Modificações salvas!'); loadSavedCharacters(); }
+    if (result.status === 'success') { alert('Modificações salvas!'); loadSavedCharacters(); }
 }
 
 async function deleteChar(event, id) {
     event.stopPropagation();
-    if(!confirm('Deseja deletar?')) return;
-    const res = await fetch(`api/delete_character.php?id=${id}`);
+    if (!confirm('Deseja deletar?')) return;
+    const res = await fetch(`api/delete_character.php?id=${id}`, { credentials: 'include' });
     const result = await res.json();
     if (result.status === 'success') loadSavedCharacters();
 }
@@ -238,17 +241,17 @@ async function handleAuth(e) {
     const fd = new FormData();
     fd.append('email', document.getElementById('auth-email').value);
     fd.append('password', document.getElementById('auth-pass').value);
-    if(!isLogin) fd.append('name', document.getElementById('auth-name').value);
+    if (!isLogin) fd.append('name', document.getElementById('auth-name').value);
 
-    const res = await fetch(`api/auth.php?action=${action}`, { method: 'POST', body: fd });
+    const res = await fetch(`api/auth.php?action=${action}`, { method: 'POST', body: fd, credentials: 'include' });
     const result = await res.json();
-    if(result.status === 'success') { loadHome(); } else { alert(result.message); }
+    if (result.status === 'success') { loadHome(); } else { alert(result.message); }
 }
 
 async function logout() {
     if (!confirm("Deseja sair da sessão?")) return;
     try {
-        await fetch('api/auth.php?action=logout');
+        await fetch('api/auth.php?action=logout', { credentials: 'include' });
         loadLogin();
     } catch (e) {
         loadLogin();
