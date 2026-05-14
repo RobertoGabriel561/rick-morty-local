@@ -1,10 +1,9 @@
 <?php
 // api/config.php
 
-$sessionPath = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'sessions';
-if (!file_exists($sessionPath)) {
-    mkdir($sessionPath, 0777, true);
-}
-ini_set('session.save_path', $sessionPath);
+ini_set('session.use_cookies', 1);
+ini_set('session.use_only_cookies', 1);
+ini_set('session.cookie_samesite', 'None');
+ini_set('session.cookie_secure', 1);
 
 require_once __DIR__ . '/db.php';
