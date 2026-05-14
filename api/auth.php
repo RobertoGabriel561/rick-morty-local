@@ -1,4 +1,3 @@
-
 <?php
 // api/auth.php
 
