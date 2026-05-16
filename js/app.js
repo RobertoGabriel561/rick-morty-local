@@ -192,7 +192,9 @@ function loadAbout() {
         <div class="card p-5 shadow">
             <h2 class="text-success-neon">🛸 Roberto Gabriel</h2>
             <hr style="border-color: #3d3f5e;">
-            <p>Desenvolvedor focado em soluções web robustas, integrando APIs dinâmicas com PHP e bancos relacionais locais.</p>
+            <p>Desenvolvedor focado em soluções web robustas, integrando APIs dinâmicas com PHP e bancos relacionais locais,Analista de Sistemas com experiência em suporte técnico, infraestrutura de redes, administração de banco de dados e análise de dados.
+Tenho atuação focada em desenvolvimento de sistemas, resolução de incidentes, melhoria contínua de sistemas e suporte a usuários, garantindo estabilidade e eficiência.
+ experiência em gestão e acompanhamento de projetos de TI, atuando no planejamento, organização e execução de iniciativas tecnológicas. Experiência na coordenação de atividades, alinhamento com equipes e stakeholders, acompanhamento de prazos e controle de entregas. Apoio na definição de requisitos, testes, integrações e melhoria contínua de processos, garantindo a qualidade, eficiência e sucesso na implementação de soluções de tecnologia.</p>
             <div class="mt-3">
                 <a href="https://github.com/RobertoGabriel561" target="_blank" class="btn btn-outline-light me-2">GitHub</a>
                 <a href="https://www.linkedin.com/in/roberto-gabriel-377156274" target="_blank" class="btn btn-outline-info">LinkedIn</a>
